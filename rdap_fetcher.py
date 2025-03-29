@@ -16,7 +16,7 @@ def get_registars_rdap_endpoint(tld: str):
         str: RDAP endpoint URL for the given TLD
     """
     url = IANA_ENDPOINT + tld
-    answer = requests.get(url)
+    answer = requests.get(url=url, timeout=120)
 
     if answer.status_code == 200:
         answer_json = answer.json()
@@ -43,7 +43,7 @@ def get_domain_contact_informations(domain: str, tld: str):
     registar_endpoint = get_registars_rdap_endpoint(tld=tld)
     url = registar_endpoint + REGISTAR_SUFFIX + domain
 
-    answer = requests.get(url)
+    answer = requests.get(url=url, timeout=120)
     if answer.status_code == 200:
         json_answer = answer.json()
 
@@ -76,5 +76,4 @@ def get_domain_contact_informations(domain: str, tld: str):
         data["events"] = events
         return data
 
-    else:
-        return None
+    return None
