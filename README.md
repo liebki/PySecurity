@@ -5,22 +5,23 @@ This projects is/will provide a bunch of stuff to get informations that are publ
 
 1. **Fetching SSL Certificate Data**: Queries `crt.sh` to obtain SSL certificate transparency logs.
 2. **Fetching Domain Registrar and Contact Information**: Uses the IANA RDAP service to retrieve registrar details and contact information for a given domain.
+3. **UrlHaus URL Check**: Check a url, domain, IP or whatever against the database of UrlHaus.
 
 ## Features
 This project aims to include the following features:
-- Fetch SSL certificate information using `crt.sh`
-- Retrieve RDAP registrar endpoint for a given TLD
-- Get domain contact details, including registrar information, phone numbers, and emails
-- Extract domain registration events (e.g., creation and expiration dates)
-- If a domain is listed and data is available, the script prints:
+- **Fetch SSL certificate information**
+- **Retrieve domain informations for a given domain using RDAP** (see Notes)
+  - Get domain contact details, including registrar information, phone numbers, and emails
+  - Extract domain registration events (e.g., creation and expiration dates)
   - The name (often the registrar or company where the domain was purchased)
-  - The phone and email contact details
-  - Domain events such as registration, expiration, and last change dates
+- **Use the UrlHaus database to check a url, domain or IP**
+  - If found in dataset, further information like urlhaus-link, date of addition, threat and exact threat-url are returned.
 
 
 ### Planned:
   - Shodan crawling for host and service enumeration
   - AbuseIP database checks for malicious IPs
+    - Maybe as API-Key is needed
   - IP information retrieval (e.g., geolocation, ASN data)
   - Network scanning capabilities
   - CVE (Common Vulnerabilities and Exposures) information lookup
@@ -37,35 +38,8 @@ pip install requests
 ```
 
 ## Usage
-### 1. Get SSL Certificate Data
-```python
-from certificate_fetcher import get_certificate_data
+- Please check the `main.py` file for the code or the individual modules in the `modules` folder.
 
-cert_data = get_certificate_data("example.com")
-print(cert_data)
-```
-**Output:** JSON response containing SSL certificate details.
-
-### 2. Get Registrar RDAP Endpoint
-```python
-from rdap_fetcher import get_registars_rdap_endpoint
-
-tld = "com"
-rdap_url = get_registars_rdap_endpoint(tld)
-print(rdap_url)
-```
-**Output:** RDAP endpoint URL for the given TLD (if available).
-
-### 3. Get Domain Contact Information
-```python
-from rdap_fetcher import get_domain_contact_informations
-
-domain = "example"
-tld = "com"
-domain_info = get_domain_contact_informations(domain, tld)
-print(domain_info)
-```
-**Output:** JSON containing domain contact details (name, phone, email) and registration events.
 
 ## Notes
 - Some domains may not have publicly available contact information due to privacy regulations.

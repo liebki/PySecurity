@@ -1,5 +1,7 @@
 """Module for fetching domain registration and contact information using the RDAP protocol."""
 
+# pylint: disable=R0914,R1702
+
 import requests
 
 IANA_ENDPOINT = "https://rdap.iana.org/domain/"
@@ -8,10 +10,10 @@ REGISTAR_SUFFIX = "domain/"
 
 def get_registars_rdap_endpoint(tld: str):
     """Get the RDAP endpoint URL for a given top-level domain.
-    
+
     Args:
         tld (str): Top-level domain (e.g., 'com', 'org')
-        
+
     Returns:
         str: RDAP endpoint URL for the given TLD
     """
@@ -25,17 +27,16 @@ def get_registars_rdap_endpoint(tld: str):
                 if ("alternate" in registar_link["rel"]) and (registar_link["href"]):
                     return registar_link["href"]
 
-    else:
-        return None
+    return None
 
 
 def get_domain_contact_informations(domain: str, tld: str):
     """Fetch domain contact information and registration events using RDAP.
-    
+
     Args:
         domain (str): Domain name without TLD (e.g., 'example')
         tld (str): Top-level domain (e.g., 'com')
-        
+
     Returns:
         dict: Dictionary containing contact info (name, tel, mail) and domain events,
               or None if request fails
