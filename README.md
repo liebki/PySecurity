@@ -8,6 +8,7 @@ This projects is/will provide a bunch of stuff to get informations that are publ
 2. **Fetching Domain Registrar and Contact Information**: Uses the IANA RDAP service to retrieve registrar details and contact information for a given domain.
 3. **UrlHaus URL Check**: Check a url, domain, IP or whatever against the database of UrlHaus.
 4. **IP information retrieval**: Get a few informations about any IP-address
+5. **Shodan CVE Database**: Get informations about CVEs, get the newest or used exploits.
 
 ## Features
 
@@ -22,6 +23,11 @@ This project aims to include the following features:
   - If found in dataset, further information like urlhaus-link, date of addition, threat and exact threat-url are returned.
 - **Use different providers to get informations about IP-addresses**
   - Depending on the data available, things like ccTld's, country, long and lati, isp, organisation, asn, countries at country border, languages, is country in europe, population, zipcode
+- **Get informations about CVEs**
+  - Get active exploits by CVEs
+  - Get CVEs by product
+  - Get detail CVE informations
+  - etc.
 
 ### Planned
 
@@ -34,6 +40,8 @@ The thing is I want to only use free providers to make this script simpler and j
 - CVE (Common Vulnerabilities and Exposures) information lookup
 - Other security and reconnaissance utilities as needed
 - More IP-informations?
+  - Ip2Hostname
+  - Hostname2Ip
 
 ## Requirements
 
