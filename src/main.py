@@ -14,6 +14,7 @@ from modules.shodan_cve_fetcher import (
     get_known_exploited_cves,
     get_latest_cves,
 )
+from modules.dns_nslookup_fetcher import fetch_dns_records, DnsProvider
 
 
 certificates = get_certificate_data(name="google")
@@ -32,7 +33,7 @@ for elem in elements:
 ip_informations = get_ip_informations(ip="12.82.121.191")
 print(ip_informations)
 
-cve_list_product = get_cves_by_product(product_name="9uba")
+cve_list_product = get_cves_by_product(product_name="chrome")
 for cve in cve_list_product:
     print(cve)
     print("\n")
@@ -54,3 +55,13 @@ for ke_cve in known_exploited_cves:
 
 cve_data = get_cve_informations(cve_id="CVE-2016-10087")
 print(cve_data)
+
+record_daten = fetch_dns_records(domain="chip.de", dns_server=DnsProvider.GOOGLE)
+
+for record in record_daten:
+    print(f"Record Type: {record['record_type']}")
+    for answer in record["answers"]:
+        print(f"  Raw: {answer['raw']}")
+        print(f"  Record Type: {answer['record_type']}")
+        print(f"  Name: {answer['name']}")
+        print(f"  TTL: {answer['ttl']}")

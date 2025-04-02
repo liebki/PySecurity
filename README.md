@@ -9,6 +9,7 @@ This projects is/will provide a bunch of stuff to get informations that are publ
 3. **UrlHaus URL Check**: Check a url, domain, IP or whatever against the database of UrlHaus.
 4. **IP information retrieval**: Get a few informations about any IP-address
 5. **Shodan CVE Database**: Get informations about CVEs, get the newest or used exploits.
+6. **DNS record fetchting**: Get the DNS-records of domains with their content.
 
 ## Features
 
@@ -28,6 +29,8 @@ This project aims to include the following features:
   - Get CVEs by product
   - Get detail CVE informations
   - etc.
+- **DNS record fetchting**
+  - Get all available DNS-records of a domain with the data.
 
 ### Planned
 
@@ -38,6 +41,7 @@ The thing is I want to only use free providers to make this script simpler and j
   - Maybe as API-Key is needed
 - Network scanning capabilities
 - CVE (Common Vulnerabilities and Exposures) information lookup
+  - Done?
 - Other security and reconnaissance utilities as needed
 - More IP-informations?
   - Ip2Hostname
@@ -53,7 +57,7 @@ The thing is I want to only use free providers to make this script simpler and j
 To install the required dependencies, run:
 
 ```sh
-pip install requests
+pip install -r requirements.txt
 ```
 
 ## Usage

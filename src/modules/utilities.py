@@ -26,3 +26,7 @@ def get_headers():
     """
     headers["User-Agent"] = random.choice(user_agents)
     return headers
+
+
+def get_random_ua():
+    return random.choice(user_agents)
